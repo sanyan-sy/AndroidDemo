@@ -1,0 +1,12 @@
+<translate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fromXDelta="0"
+    android:toXDelta="500"
+    />
+
+<!--    相对于当前移动视图偏移量-->
+<!--    android:fromXDelta="0%"   动画起始位置是视图当前位置-->
+<!--    android:toXDelta="50%"-->
+<!--    android:fromYDelta="0%"-->
+<!--    android:toYDelta="50%"-->
+
+<!--    android:duration="1000"-->

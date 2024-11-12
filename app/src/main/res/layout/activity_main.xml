@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/bt_main_shared"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ViewPager"
+            android:textAllCaps="false"
+            android:onClick="jumpToViewPager"/>
+
+        <Button
+            android:id="@+id/bt_main_animation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Animation"
+            android:textAllCaps="false"
+            android:onClick="jumpToAnimation"/>
+
+        <Button
+            android:id="@+id/bt_main_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dialog"
+            android:textAllCaps="false"
+            android:onClick="jumpToDialog"/>
+
+        <Button
+            android:id="@+id/bt_main_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View"
+            android:textAllCaps="false"
+            android:onClick="jumpToView"/>
+
+        <Button
+            android:id="@+id/bt_main_dispatch_event"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="事件分发"
+            android:textAllCaps="false"
+            android:onClick="jumpToDispatchEvent"/>
+
+        <Button
+            android:id="@+id/bt_main_download_service"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="服务"
+            android:textAllCaps="false"
+            android:onClick="jumpToService"/>
+
+
+        <Button
+            android:id="@+id/bt_main_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="EditText"
+            android:textAllCaps="false"
+            android:onClick="jumpToEditText"/>
+
+        <Button
+            android:id="@+id/bt_main_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textAllCaps="false"
+            android:onClick="jumpToTextView"/>
+
+        <Button
+            android:id="@+id/bt_main_channel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="多渠道打包"
+            android:textAllCaps="false"
+            android:onClick="jumpToChannel"/>
+
+        <Button
+            android:id="@+id/bt_main_view_stub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ViewStub(延迟化加载)"
+            android:textAllCaps="false"
+            android:onClick="jumpToViewStub"/>
+
+        <Button
+            android:id="@+id/bt_main_coordinator_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CoordinatorLayout"
+            android:textAllCaps="false"
+            android:onClick="jumpToCoordinatorLayout"/>
+
+        <Button
+            android:id="@+id/bt_main_assets"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="assets"
+            android:textAllCaps="false"
+            android:onClick="jumpToAssets"/>
+
+        <Button
+            android:id="@+id/bt_main_drag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="drag(拖拽)"
+            android:textAllCaps="false"
+            android:onClick="jumpToDrag"/>
+
+    </LinearLayout>
+
+</ScrollView>

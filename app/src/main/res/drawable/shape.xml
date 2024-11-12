@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+<!--    在 Android 开发中，Shape（形状）是一种可绘制对象，-->
+<!--    用于创建各种形状和背景效果，如矩形、圆角矩形、圆形、椭圆等。-->
+<!--    Shape 可以通过 XML 或代码进行定义和操作，并应用于各种视图组件，如按钮、文本框等。-->
+<!--    Shape Drawable 的属性包括：-->
+<!--    <solid>：设置填充颜色或渐变色。-->
+<!--    <corners>：设置圆角半径。-->
+<!--    <stroke>：设置边框颜色和宽度。-->
+<!--    <gradient>：设置渐变色。-->
+<!--    <size>：设置形状的大小。-->
+<!--    <padding>：设置形状的内边距。-->
+
+    <solid android:color="#ffffff" /> <!-- 填充颜色 -->
+    <corners
+        android:topLeftRadius="10dp"
+        android:topRightRadius="10dp"/> <!-- 圆角半径 -->
+<!--    <size-->
+<!--        android:width="200dp"-->
+<!--        android:height="100dp" /> &lt;!&ndash; 宽度和高度 &ndash;&gt;-->
+
+<!--    <stroke-->
+<!--        android:color="@color/purple_200"-->
+<!--        android:width="10dp"/>-->
+
+</shape>

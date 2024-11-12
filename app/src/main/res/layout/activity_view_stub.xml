@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ViewStub.ViewStubActivity">
+
+    <ViewStub
+        android:id="@+id/view_stu_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout="@layout/text_layout"/>
+
+    <ViewStub
+        android:id="@+id/view_stu_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout="@layout/image_layout"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="显示文本"
+        android:onClick="toShowText"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="显示图片"
+        android:onClick="toShowImage"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="关闭文本"
+        android:onClick="toCloseText"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="关闭图片"
+        android:onClick="toCloseImage"/>
+
+</LinearLayout>

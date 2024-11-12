@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".another.EditTextActivity">
+
+    <EditText
+        android:id="@+id/et_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        />
+
+<!--    获取焦点-->
+<!--    android:focusable="true"-->
+<!--    android:focusableInTouchMode="true"-->
+
+<!--    只能显示的数据-->
+<!--    android:digits="0123lj"-->
+
+    <!--    显示的数据类型-->
+    <!--    android:inputType="none"-->
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="toSetText"/>
+
+</LinearLayout>

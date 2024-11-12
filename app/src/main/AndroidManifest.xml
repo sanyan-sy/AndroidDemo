@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 访问网络需要声明权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" /> <!-- 读取和写入外部存储的权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MyApplication2">
+        <activity
+            android:name=".drag.DragBaseActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:exported="true" />
+        <activity
+            android:name=".assets.AssetsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".coordinatorlayout.CoordinatorLayoutActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ViewStub.ViewStubActivity"
+            android:exported="true" />
+        <activity
+            android:name=".channel.ChannelActivity"
+            android:exported="true" />
+        <activity
+            android:name=".another.TextViewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".another.EditTextActivity"
+            android:exported="true" />
+        <activity
+            android:name=".service.broadcast.DownloadActivity32"
+            android:exported="true" />
+        <activity
+            android:name=".service.broadcast.DownloadActivity31"
+            android:exported="true" />
+        <activity
+            android:name=".service.ServiceActivity"
+            android:exported="true" />
+        <activity
+            android:name=".service.bindservice.DownloadActivity2"
+            android:exported="true" />
+        <activity
+            android:name=".dispatchevent.test.TestActivity"
+            android:exported="true" />
+        <activity
+            android:name=".service.unbindservice.DownloadActivity"
+            android:exported="true" />
+
+        <service
+            android:name=".service.unbindservice.DownloadService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".service.bindservice.DownloadService2"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".service.broadcast.DownloadService3"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name=".dispatchevent.slideconflict.SlideConflictActivity"
+            android:exported="true" />
+        <activity
+            android:name=".dispatchevent.DispatchEventActivity"
+            android:exported="true" />
+        <activity
+            android:name=".dispatchevent.moveview.MyViewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.circular2.CircularActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.download.DownloadProgressActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.longpress.LongPressActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.ViewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.picture.PictureViewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.circular.CustomRippleViewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.Ripple.RippleViewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".animation.PropertyAnimation.PropertyAnimationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".animation.ViewAnimation.ViewAnimationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".animation.AnimationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".viewpager.ViewPagerFragmentActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
