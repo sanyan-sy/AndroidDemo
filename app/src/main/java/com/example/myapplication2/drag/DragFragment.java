@@ -28,7 +28,7 @@ import java.util.Random;
 
 /**
  * @author lx
- * 描述：拖拽demo
+ * 描述：拖拽demo 测试上传GitHub
  */
 public class DragFragment extends Fragment {
 
