@@ -44,6 +44,13 @@
         android:textAllCaps="false"
         android:onClick="jumpToCircular2"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="可自动换行容器(云标签)"
+        android:textAllCaps="false"
+        android:onClick="jumpToCircular2"/>
+
 
 
 </LinearLayout>
