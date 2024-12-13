@@ -98,6 +98,9 @@
             android:name=".view.Ripple.RippleViewActivity"
             android:exported="true" />
         <activity
+            android:name=".view.FlowView.FlowViewActivity"
+            android:exported="true" />
+        <activity
             android:name=".animation.PropertyAnimation.PropertyAnimationActivity"
             android:exported="true" />
         <activity

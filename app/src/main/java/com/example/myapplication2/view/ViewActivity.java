@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.myapplication2.R;
+import com.example.myapplication2.view.FlowView.FlowViewActivity;
 import com.example.myapplication2.view.circular.CustomRippleViewActivity;
 import com.example.myapplication2.view.circular2.CircularActivity;
 import com.example.myapplication2.view.download.DownloadProgressActivity;
@@ -44,6 +45,11 @@ public class ViewActivity extends AppCompatActivity {
 
     public void jumpToCircular2(View view) {
         Intent intent = new Intent(this, CircularActivity.class);
+        startActivity(intent);
+    }
+
+    public void jumpFlowView(View view) {
+        Intent intent = new Intent(this, FlowViewActivity.class);
         startActivity(intent);
     }
 }

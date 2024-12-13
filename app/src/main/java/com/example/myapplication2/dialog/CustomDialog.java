@@ -57,6 +57,14 @@ public class CustomDialog extends Dialog {
             // 将对话框的位置设为底部
             params.gravity = Gravity.BOTTOM;
             window.setAttributes(params);
+
+            window.getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+            );
+
         }
 
         // 可以通过按下返回键或点击对话框外部取消对话框

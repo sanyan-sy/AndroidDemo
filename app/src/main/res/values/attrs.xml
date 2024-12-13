@@ -5,4 +5,10 @@
         <attr name="maxRadius" format="dimension" />
         <attr name="animationDuration" format="integer" />
     </declare-styleable>
+
+    <declare-styleable name="FlowLayout">
+        <attr name="horizontal_spacing" format="dimension" />
+        <attr name="vertical_spacing" format="dimension" />
+        <attr name="max_lines" format="integer" />
+    </declare-styleable>
 </resources>

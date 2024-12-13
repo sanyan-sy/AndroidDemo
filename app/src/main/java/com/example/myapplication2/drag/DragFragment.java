@@ -28,7 +28,7 @@ import java.util.Random;
 
 /**
  * @author lx
- * 描述：拖拽demo 测试上传GitHub 测试上传GitHub2
+ * 描述：拖拽demo
  */
 public class DragFragment extends Fragment {
 
@@ -318,7 +318,7 @@ public class DragFragment extends Fragment {
             ((ViewGroup) dragFloatView.getParent()).removeView(dragFloatView);
         }
         rootView.addView(dragFloatView);
-//        dragFloatView.setX(UIUtils.dip2px(getActivity(), 100));
+        dragFloatView.setX(UIUtils.dip2px(getActivity(), 100));
 //        dragFloatView.setY(UIUtils.dip2px(getActivity(), 100));
     }
 
@@ -343,9 +343,9 @@ public class DragFragment extends Fragment {
 //            dragFloatView.setX(touchX - width / 2);
 //            dragFloatView.setY(touchY - height/2);
             rootView.addView(dragFloatView);
-            dragFloatView.setX(touchX - width / 2);
-            dragFloatView.setY(touchY - height / 2);
-//            updateDragViewPosition();
+//            dragFloatView.setX(touchX - width / 2);
+//            dragFloatView.setY(touchY - height / 2);
+            updateDragViewPosition();
         } catch (Exception e) {
             e.printStackTrace();
         }
