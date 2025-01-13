@@ -14,6 +14,7 @@ import com.example.myapplication2.view.download.DownloadProgressActivity;
 import com.example.myapplication2.view.longpress.LongPressActivity;
 import com.example.myapplication2.view.longpress.LongPressView;
 import com.example.myapplication2.view.picture.PictureViewActivity;
+import com.example.myapplication2.view.viewStudy.ViewStudyActivity;
 
 public class ViewActivity extends AppCompatActivity {
 
@@ -50,6 +51,11 @@ public class ViewActivity extends AppCompatActivity {
 
     public void jumpFlowView(View view) {
         Intent intent = new Intent(this, FlowViewActivity.class);
+        startActivity(intent);
+    }
+
+    public void jumpViewTest(View view) {
+        Intent intent = new Intent(this, ViewStudyActivity.class);
         startActivity(intent);
     }
 }
