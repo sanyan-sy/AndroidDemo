@@ -50,7 +50,10 @@ public class FlowViewActivity extends AppCompatActivity implements View.OnClickL
         tagTv.setText(mEditText.getText().toString());
         mFlowView.addView(tagView);
 
-        View tagView2 = LayoutInflater.from(this).inflate(R.layout.item_flow_view, null);
-        myFlowView.addTag(tagView2);
+//        View tagView2 = LayoutInflater.from(this).inflate(R.layout.item_flow_view, null);
+
+        TextView tag1 = new TextView(this);
+        tag1.setText(mEditText.getText().toString());
+        myFlowView.addTag(tag1);
     }
 }

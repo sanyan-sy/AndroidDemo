@@ -17,85 +17,105 @@ public class MyFlowView extends ViewGroup {
         super(context, attrs);
     }
 
-    /**
-     * 负责 测量控件及其子控件的大小，即为每个子控件分配宽高空间，并确定整个 ViewGroup 的宽高。
-     * @param widthMeasureSpec horizontal space requirements as imposed by the parent.
-     *                         The requirements are encoded with
-     *                         {@link android.view.View.MeasureSpec}.
-     * @param heightMeasureSpec vertical space requirements as imposed by the parent.
-     *                         The requirements are encoded with
-     *                         {@link android.view.View.MeasureSpec}.
-     *
-     */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int width = MeasureSpec.getSize(widthMeasureSpec); // 可用宽度
-        int totalHeight = getPaddingTop();                // 初始化总高度
-        int currentWidth = getPaddingLeft();              // 当前行已使用的宽度
+        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+        int availableWidth = widthSize - getPaddingLeft() - getPaddingRight(); // 可用宽度
 
-        int childCount = getChildCount();
-        for (int i = 0; i < childCount; i++) {
-            View child = getChildAt(i);
-            measureChild(child, widthMeasureSpec, heightMeasureSpec); // 测量子控件
-            int childWidth = child.getMeasuredWidth();
-            int childHeight = child.getMeasuredHeight();
-
-            // 检查是否需要换行
-            if (currentWidth + childWidth + getPaddingRight() > width) {
-                currentWidth = getPaddingLeft(); // 换行，重置当前宽度
-                totalHeight += childHeight + verticalSpacing; // 增加高度
-            }
-
-            currentWidth += childWidth + horizontalSpacing; // 更新当前行宽度
-        }
-
-        totalHeight += getPaddingBottom(); // 加上底部内边距
-        setMeasuredDimension(width, totalHeight); // 设置控件的最终宽高
-    }
-
-    /**
-     * 定位控件及其子控件的位置（确定每个控件在父容器中的具体坐标），即根据测量结果，将每个子控件放到具体的坐标位置上
-     * @param changed This is a new size or position for this view
-     * @param l Left position, relative to parent
-     * @param t Top position, relative to parent
-     * @param r Right position, relative to parent
-     * @param b Bottom position, relative to parent
-     *
-     * onLayout 方法会被系统自动调用，前提是控件已经完成了 测量（onMeasure）
-     */
-    @Override
-    protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        int width = getWidth(); // 控件的总宽度
-        int currentWidth = getPaddingLeft(); // 当前行的起始宽度
-        int currentHeight = getPaddingTop(); // 当前行的起始高度
+        int totalHeight = getPaddingTop(); // 总高度，初始化为顶部 padding
+        int currentWidth = 0; // 当前行已使用的宽度，初始化为 0
+        int currentLineMaxHeight = 0; // 当前行的最大高度
 
         for (int i = 0; i < getChildCount(); i++) {
             View child = getChildAt(i);
-            int childWidth = child.getMeasuredWidth();
-            int childHeight = child.getMeasuredHeight();
-
-            // 换行逻辑
-            if (currentWidth + childWidth + getPaddingRight() > width) {
-                currentWidth = getPaddingLeft(); // 重置当前宽度
-                currentHeight += childHeight + verticalSpacing; // 增加高度
+            if (child.getVisibility() == GONE) {
+                continue; // 跳过不可见的子View
             }
 
-            // 布局当前子控件（每个子控件的位置由这四个值决定，坐标值是相对于父控件左上角的）
-            child.layout(
-                    currentWidth,                           // 左坐标
-                    currentHeight,                          // 上坐标
-                    currentWidth + childWidth,              // 右坐标
-                    currentHeight + childHeight             // 下坐标
-            );
+            // 测量子View，考虑Margin
+            measureChildWithMargins(child, widthMeasureSpec, 0, heightMeasureSpec, 0);
+            MarginLayoutParams lp = (MarginLayoutParams) child.getLayoutParams();
+            int childWidth = child.getMeasuredWidth() + lp.leftMargin + lp.rightMargin;
+            int childHeight = child.getMeasuredHeight() + lp.topMargin + lp.bottomMargin;
+
+            // 检查是否需要换行
+            if (currentWidth + childWidth > availableWidth) {
+                totalHeight += currentLineMaxHeight + verticalSpacing; // 换行，累加行高
+                currentWidth = 0; // 重置当前行宽度
+                currentLineMaxHeight = 0; // 重置当前行最大高度
+            }
 
             currentWidth += childWidth + horizontalSpacing; // 更新当前行宽度
+            currentLineMaxHeight = Math.max(currentLineMaxHeight, childHeight); // 更新当前行最大高度
+        }
+
+        // 添加最后一行的高度
+        totalHeight += currentLineMaxHeight + getPaddingBottom();
+
+        // 设置最终测量的宽高
+        setMeasuredDimension(widthSize, resolveSize(totalHeight, heightMeasureSpec));
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        int availableWidth = getWidth() - getPaddingLeft() - getPaddingRight(); // 可用宽度
+        int currentWidth = 0; // 当前行已使用的宽度，初始化为 0
+        int currentHeight = getPaddingTop(); // 当前行的起始高度
+        int currentLineMaxHeight = 0; // 当前行的最大高度
+
+        for (int i = 0; i < getChildCount(); i++) {
+            View child = getChildAt(i);
+            if (child.getVisibility() == GONE) {
+                continue; // 跳过不可见的子View
+            }
+
+            MarginLayoutParams lp = (MarginLayoutParams) child.getLayoutParams();
+            int childWidth = child.getMeasuredWidth() + lp.leftMargin + lp.rightMargin;
+            int childHeight = child.getMeasuredHeight() + lp.topMargin + lp.bottomMargin;
+
+            // 检查是否需要换行
+            if (currentWidth + childWidth > availableWidth) {
+                currentHeight += currentLineMaxHeight + verticalSpacing; // 换行，增加高度
+                currentWidth = 0; // 重置当前行宽度
+                currentLineMaxHeight = 0; // 重置当前行最大高度
+            }
+
+            // 计算子View的布局位置
+            int left = getPaddingLeft() + currentWidth + lp.leftMargin; // 左坐标
+            int top = currentHeight + lp.topMargin; // 上坐标
+            int right = left + child.getMeasuredWidth(); // 右坐标
+            int bottom = top + child.getMeasuredHeight(); // 下坐标
+
+            // 布局子View
+            child.layout(left, top, right, bottom);
+
+            // 更新当前行宽度和最大高度
+            currentWidth += childWidth + horizontalSpacing;
+            currentLineMaxHeight = Math.max(currentLineMaxHeight, childHeight);
         }
     }
 
-    public void addTag(View tag){
-        addView(tag);
-        requestLayout();
+    @Override
+    protected LayoutParams generateDefaultLayoutParams() {
+        // 默认生成带Margin的LayoutParams
+        return new MarginLayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
     }
 
+    @Override
+    protected LayoutParams generateLayoutParams(LayoutParams p) {
+        // 将传入的LayoutParams转换为MarginLayoutParams
+        return new MarginLayoutParams(p);
+    }
+
+    @Override
+    public LayoutParams generateLayoutParams(AttributeSet attrs) {
+        // 从XML中读取LayoutParams时，生成带Margin的LayoutParams
+        return new MarginLayoutParams(getContext(), attrs);
+    }
+
+    public void addTag(View tag) {
+        addView(tag);
+        requestLayout(); // 请求重新布局
+    }
 }
 
